@@ -1,0 +1,68 @@
+html, 
+body {
+    height: 100%;
+}
+
+.navbar {
+    background:transparent;
+}
+
+#logo {
+    height: 45px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#beep-icon {
+    height: 45px;
+}
+
+#beep-button {
+    visibility: hidden;
+    position: absolute;
+    top: 15%;
+    right: 40%;
+}
+
+#interaction-form-container {
+    position: absolute;
+    top: 20%;
+    right: 2%;
+}
+
+#videos-container {
+    text-align: center;
+}
+
+.container {
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 0;
+}
+
+#buttons-row {
+    text-align: center;
+}
+
+#save-logging-button {
+    position: absolute;
+    top: 15%;
+    right: 18%;
+}
+
+#set-avatar-button {
+    position: absolute;
+    top: 15%;
+    right: 28%;
+}
+
+#input-name {
+    position: absolute;
+    top: 15%;
+    right: 50%;
+    width: 20%;
+}
+
+.next-button {
+    background: red !important;
+}
