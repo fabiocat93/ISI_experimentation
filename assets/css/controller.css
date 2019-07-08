@@ -179,7 +179,7 @@ body {
 }
 
 #brow_tone-container {
-    display: block;
+    display: none;
 }
 
 #eyeshadow_tone-container {

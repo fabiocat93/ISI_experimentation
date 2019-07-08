@@ -1,0 +1,21 @@
+Natural
+The agent starts speaking at: 1562574884814
+The agent stops speaking at: 1562574895221
+Interaction starts: 1562574903475
+User starts talking: 1562574904099
+User stops talking: 1562574913923
+Interaction stops: 1562574914881
+
+Setup starts: 1562574954963
+Setup stops: 1562574956713
+
+
+
+
+Eye tracking
+The agent starts speaking at: 1562574981173
+The agent stops speaking at: 1562574982138
+Interaction starts: 1562574982870
+User starts talking: 1562574983356
+User stops talking: 1562574983974
+Interaction stops: 1562574984511
