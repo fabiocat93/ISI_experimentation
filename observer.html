@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Observer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/observer.css">
+</head>
+
+<body>
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="#">
+            <img id="logo" src="./assets/images/logo.png" class="d-inline-block align-middle" alt="">
+            Observer
+        </a>
+    </nav>
+
+    </br>
+    </br>
+
+    <div id="general-container" class="container">
+        <div class="row">
+            <div class="col-6">
+                <input id="name-input" class="form-control" type="text" placeholder="User's name">
+            </div>
+            <div id="interaction-form-container" class="col-6"></div>
+        </div>
+        </br>
+        <div class="row">
+            <div class="col-2">
+                <button id="undo-button" type="button" class="btn btn-danger">&larr; Undo</button>
+            </div>
+        </div>    
+        </br>
+        <div id="buttons-row" class="row">
+            <div id="agent-column" class="col-3">
+                <div class="col-12">
+                    <button id="agent-starts-button" type="button" class="btn btn-primary">ISI starts talking</button>
+                </div>
+                <div class="col-12">
+                    <button id="agent-stops-button" type="button" class="btn btn-primary">ISI stops talking</button>
+                </div>
+
+            </div>
+            <div id="interaction-column" class="col-3">
+                <div class="col-12">
+                    <button id="interaction-starts-button" type="button" class="btn btn-secondary">Interaction starts</button>
+                </div>
+                <div class="col-12">                  
+                    <button id="interaction-stops-button" type="button" class="btn btn-secondary">Interaction stops</button>
+                </div>
+            </div>
+            <div id="user-column" class="col-3">
+                <div class="col-12">                  
+                    <button id="user-starts-button" type="button" class="btn btn-warning">User starts talking</button>
+                </div>
+                <div class="col-12">                  
+                    <button id="user-stops-button" type="button" class="btn btn-warning">User stops talking</button>
+                </div>
+            </div>
+            <div id="setup-column" class="col-3">
+                <div class="col-12">                  
+                    <button id="setup-starts-button" type="button" class="btn btn-info">Setup starts</button>
+                </div>
+                <div class="col-12">                  
+                    <button id="setup-stops-button" type="button" class="btn btn-info">Setup stops</button>
+                </div>
+            </div>
+        </div>
+        </br>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-2">
+                <button id="save-logging-button" type="button" class="btn btn-success">Save logging &#10004;</button>
+            </div>
+            <div class="col-2">
+                <button id="drop-logging-button" type="button" class="btn btn-danger">Delete logging &#10006;</button>
+            </div>
+        </div>
+        </br>
+        <div class="row">
+            <div id="console" class="col"></div>
+            <div class="col">
+                Notes:
+                <textarea id="text-area">
+                    
+                </textarea>                      
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Scripts -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Connection manager for the controller -->
+    <script type="text/javascript" src="./assets/js/observer.js"></script>
+</body>
+</html>

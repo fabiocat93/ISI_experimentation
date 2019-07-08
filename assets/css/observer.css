@@ -1,0 +1,32 @@
+html, 
+body {
+    height: 100%;
+    background: white;
+}
+
+#buttons-row {
+    text-align: center;
+}
+
+button {
+    margin-top: 1%;
+}
+
+.navbar {
+    background:transparent;
+}
+
+#logo {
+    height: 45px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#console {
+    overflow-y: auto;
+    height: 250px;
+}
+
+#text-area {
+    width: 100%;
+}

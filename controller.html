@@ -14,6 +14,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css">
     <link rel="stylesheet" href="./assets/css/controller.css">
@@ -27,122 +29,70 @@
             <img id="logo" src="./assets/images/logo.png" class="d-inline-block align-middle" alt="">
             Controller
         </a>
-        <input id="input-name" class="form-control" type="text" value="user-name" placeholder="Name">
-
-        <button id="drop-logging-button" type="button" class="btn btn-primary" download>Drop logging</button>
-        <button id="save-logging-button" type="button" class="btn btn-primary" download>Save logging</button>
-        <button id="set-avatar-button" type="button" class="btn btn-primary">Show avatar</button>
-        <button id="reset-avatar-button" type="button" class="btn btn-primary">Reset avatar</button>
-        <a id="beep-button"><img id="beep-icon" src="./assets/images/audio.png" class="d-inline-block align-middle" alt=""></a>
-        <div id="interaction-form-container" class="d-inline-block align-middle"></div>
     </nav>
 
     <div class="container">
         <div class="row">
-            <div id="left-column" class="col-8">
+            <div class="col-4"></div>
+            <div id="status" class="col-4">STATUS</div>
+            <div class="col-4"></div>
+        </div>
+        </br>
+        
+        <div class="row">
+            <div class="col-6">
+                <input id="name-input" class="form-control" type="text" placeholder="User's name">
+            </div>
+            <div id="interaction-form-container" class="col-6"></div>
+        </div>
+        </br>
+
+        <div class="row">
+            <div id="left-column" class="col-6">
                 <!-- local/remote videos container -->
-                <button id="back-button" type="button" class="btn btn-primary d-inline-block" download>Undo</button>
-
-                <div id="status" class="d-inline-block">PLAYER STATUS</div>
-                </br>
                 <div id="videos-container"></div>
-
+                </br>
                 <div id="buttons-row" class="row">
-                    <div class="col-2">
-                        <p id="agent-start-and-stop-description">We start talking</p>
-                        <button id="agent-stops-button" type="button" class="btn btn-primary">Start</button>
-                        <p id="agent-stops-time">00:00</p>
+                    <div class="col">
+                        <button id="idle-button" type="button" class="btn btn-primary">Idle</button>
                     </div>
-                    <div class="col-2">
-                        <p>Interaction starts</p>
-                        <button id="interaction-starts-button" type="button" class="btn btn-primary">Start</button>
-                        <p id="interaction-starts-time">00:00</p>
+                    <div class="col">
+                        <button id="speaking-button" type="button" class="btn btn-primary">ISI speaks</button>
                     </div>
-                    <div class="col-1">
-                        <p>Talking starts</p>
-                        <button id="talk-starts-button" type="button" class="btn btn-primary">Stop</button>
-                        <p id="talk-starts-time">00:00</p>
+                    <div class="col">
+                        <button id="listening-button" type="button" class="btn btn-primary">The user speaks</button>
                     </div>
-                    <div class="col-2">
-                        <p>Talking stops</p>
-                        <button id="talk-stops-button" type="button" class="btn btn-primary">Start</button>
-                        <p id="talk-stops-time">00:00</p>
+                    <div id="beep-button-col" class="col">
+                        <button id="beep-button" type="button" class="btn btn-primary">Beep <i class='fas fa-volume-up'></i></button>
                     </div>
-                    <div class="col-2">
-                        <p>Interaction stops</p>
-                        <button id="interaction-stops-button" type="button" class="btn btn-primary">Stop</button>
-                        <p id="interaction-stops-time">00:00</p>    
-                    </div>
-                    <div class="col-1">
-                        <p>Setup starts</p>
-                        <button id="setup-starts-button" type="button" class="btn btn-primary">Start</button>
-                        <p id="setup-starts-time">00:00</p>  
-                    </div>
-                    <div class="col-2">
-                        <p>Setup stops</p>
-                        <button id="setup-stops-button" type="button" class="btn btn-primary">Stop</button>
-                        <p id="setup-stops-time">00:00</p>    
-                    </div>                                                                
+                </div>
+                </br>
+                <div class="row">
+                    <div id="chat" class="col"></div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col">
+                        <button id="reset-button" type="button" class="btn btn-primary">Reset Avatar &#10006;</button>
+                    </div>
+                    <div class="col">
+                        <button id="share-button" type="button" class="btn btn-primary">Share Avatar &#10004;</button>
+                    </div>
+                </div>
+                </br>
+    
                 <div id="preview" class="row">
-                    <div id="features-column" class="col-sm-7">
+                    <div id="features-column" class="col-sm-6">
                         
                     </div>
-                    <div id="image-column" class="col-sm-5">
+                    <div id="image-column" class="col-sm-6">
                     
                     </div>
                 </div>
             </div>
         </div>
         </br>
-        <div class="row">
-            <div class="col-8">
-<!--
-               <div id="buttons-row" class="row">
-                    <div class="col-2">
-                        <p id="agent-start-and-stop-description">We start talking</p>
-                        <button id="agent-stops-button" type="button" class="btn btn-primary">Start</button>
-                        <p id="agent-stops-time">00:00</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Interaction starts</p>
-                        <button id="interaction-starts-button" type="button" class="btn btn-primary">Start</button>
-                        <p id="interaction-starts-time">00:00</p>
-                    </div>
-                    <div class="col-1">
-                        <p>Talking starts</p>
-                        <button id="talk-starts-button" type="button" class="btn btn-primary">Stop</button>
-                        <p id="talk-starts-time">00:00</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Talking stops</p>
-                        <button id="talk-stops-button" type="button" class="btn btn-primary">Start</button>
-                        <p id="talk-stops-time">00:00</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Interaction stops</p>
-                        <button id="interaction-stops-button" type="button" class="btn btn-primary">Stop</button>
-                        <p id="interaction-stops-time">00:00</p>    
-                    </div>
-                    <div class="col-1">
-                        <p>Setup starts</p>
-                        <button id="setup-starts-button" type="button" class="btn btn-primary">Start</button>
-                        <p id="setup-starts-time">00:00</p>  
-                    </div>
-                    <div class="col-2">
-                        <p>Setup stops</p>
-                        <button id="setup-stops-button" type="button" class="btn btn-primary">Stop</button>
-                        <p id="setup-stops-time">00:00</p>    
-                    </div>                                                                
-                </div>
--->
-            </div>
-            <div class="col-4">
-                
-            </div>
-        </div>
     </div>
               
 

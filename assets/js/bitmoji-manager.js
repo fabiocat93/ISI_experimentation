@@ -42,8 +42,6 @@ $(document).ready(function () {
     resetAvatar();
 });
 
-
-
 function resetAvatar() {
     $.getJSON("./assets/extra/assets.json", function (data) {
         console.log(data);

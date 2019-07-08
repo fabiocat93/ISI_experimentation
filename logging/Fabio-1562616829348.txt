@@ -1,0 +1,9 @@
+New interaction way: Mouse at: 1562616821309
+Setup starts speaking at: 1562616826442
+Setup starts speaking at: 1562616826707
+Setup starts speaking at: 1562616826896
+Setup starts speaking at: 1562616827057
+User stops speaking at: 1562616827744
+User stops speaking at: 1562616827890
+User stops speaking at: 1562616828058
+User starts speaking at: 1562616828749
