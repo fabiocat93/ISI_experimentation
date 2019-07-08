@@ -38,15 +38,15 @@ var id2 = null;
 
 var link = "";
 
-$( document ).ready(function() {
+$(document).ready(function () {
     resetAvatar();
 });
 
 
 
 function resetAvatar() {
-    $.getJSON( "./assets/extra/assets.json", function( data ) {
-        console.log(data);  
+    $.getJSON("./assets/extra/assets.json", function (data) {
+        console.log(data);
         bitmoji = data;
         style_form_creator();
         pose_form_creator();
@@ -55,29 +55,44 @@ function resetAvatar() {
     });
 }
 
-function form_creator(parent, name, list_of_options) {
-    var result = "<h3>" + name + "</h3>";
-    result += "<select id = \"" + name+ "-form\" class=\"form-control\">";
-    var i;
-    for (i = 0; i < list_of_options.length; i++) {
-        var temp = "<option>" + list_of_options[i] + "</option>";
-        result += temp;
+function form_creator(parent, name, list_of_options, label_of_options) {
+    if (label_of_options) {
+        var result = "<h3>" + name + "</h3>";
+        result += "<select id = \"" + name + "-form\" class=\"form-control\">";
+        var i;
+        for (i = 0; i < list_of_options.length; i++) {
+            var temp = "<option value=" + list_of_options[i] + ">" + label_of_options[i] + "</option>";
+            result += temp;
+        }
+
+        result += "</select><br/>";
+
+        $(parent).append(result);
+    } else {
+        var result = "<h3>" + name + "</h3>";
+        result += "<select id = \"" + name + "-form\" class=\"form-control\">";
+        var i;
+        for (i = 0; i < list_of_options.length; i++) {
+            var temp = "<option>" + list_of_options[i] + "</option>";
+            result += temp;
+        }
+
+        result += "</select><br/>";
+
+        $(parent).append(result);
     }
 
-    result += "</select><br/>";
-    
-    $(parent).append(result);
 }
 
 function pose_form_creator() {
     var container = "<div id=\"pose-container\"> </div>"
     $('#style-dependent-div').append(container);
 
-    form_creator("#pose-container", "poses", poses);
-    pose = $('#poses-form').val();        
-    
-    $( "#poses-form").change(function() {
-        pose = $('#poses-form').val();        
+    form_creator("#pose-container", "poses", poses, 0);
+    pose = $('#poses-form').val();
+
+    $("#poses-form").change(function () {
+        pose = $('#poses-form').val();
         update_image();
     });
 }
@@ -85,41 +100,41 @@ function pose_form_creator() {
 function style_form_creator() {
     var container = "<div id=\"style-container\"> </div>"
     $('#features-column').append(container);
-    form_creator("#style-container", "styles", styles);
+    form_creator("#style-container", "styles", styles, 0);
     style = $('#styles-form').val();
     var result = "<div id=\"style-dependent-div\"></div>";
-    $('#features-column').append(result);        
-    
-    $( "#styles-form").change(function() {
-        style = $('#styles-form').val();     
+    $('#features-column').append(result);
+
+    $("#styles-form").change(function () {
+        style = $('#styles-form').val();
         $('#style-dependent-div').empty();
         pose_form_creator();
         perspective_form_creator();
-        gender_form_creator();      
+        gender_form_creator();
     });
 }
 
 function perspective_form_creator() {
     var container = "<div id=\"perspective-container\"> </div>"
     $('#style-dependent-div').append(container);
-    form_creator("#perspective-container", "perspectives", perspectives);
-    perspective = $('#perspectives-form').val();        
-    
-    $( "#perspectives-form").change(function() {
-        perspective = $('#perspectives-form').val();        
+    form_creator("#perspective-container", "perspectives", perspectives, 0);
+    perspective = $('#perspectives-form').val();
+
+    $("#perspectives-form").change(function () {
+        perspective = $('#perspectives-form').val();
         update_image();
     });
 }
 
 function gender_form_creator() {
-    form_creator("#style-dependent-div", "gender", ["male", "female"]);
+    form_creator("#style-dependent-div", "gender", ["male", "female"], 0);
     var result = "<div id=\"gender-dependent-div\"></div>";
     $('#style-dependent-div').append(result);
 
-    $( "#gender-form").change(function() {
+    $("#gender-form").change(function () {
         var value = $('#gender-form').val();
-        $('#gender-dependent-div').empty();        
-        
+        $('#gender-dependent-div').empty();
+
         if (value === "male") {
             if (style === "1") {
                 categories = bitmoji.traits.male.bitstrips.categories;
@@ -139,7 +154,7 @@ function gender_form_creator() {
             }
             features_creator();
         }
-        
+
         update_image();
     });
 
@@ -151,28 +166,30 @@ function features_creator() {
     for (i = 0; i < categories.length; i++) {
         var j;
         var values = [];
+        var labels = [];
         for (j = 0; j < categories[i].options.length; j++) {
             values.push(categories[i].options[j].value);
+            labels.push(categories[i].options[j].label)
         }
 
         var container = "<div id=\"" + categories[i].key + "-container\"> </div>"
         $('#gender-dependent-div').append(container);
-        form_creator("#" + categories[i].key + "-container", categories[i].key, values);
+        form_creator("#" + categories[i].key + "-container", categories[i].key, values, labels);
 
         //console.log(categories[i].key);
 
-        $( "#" + categories[i].key + "-form").change(function() {
-            update_image();             
-        });    
-    } 
+        $("#" + categories[i].key + "-form").change(function () {
+            update_image();
+        });
+    }
 
 }
 
 function update_image() {
     link = generate_link();
     var code = "<img id=\"avatar-image\" src=\"" + link + "\">";
-    $( "#image-column").empty();  
-    $( "#image-column").append(code);  
+    $("#image-column").empty();
+    $("#image-column").append(code);
 }
 
 function generate_link() {

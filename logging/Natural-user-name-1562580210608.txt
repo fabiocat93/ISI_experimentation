@@ -1,0 +1,7 @@
+Natural
+The agent starts speaking at: 1562580175453
+The agent stops speaking at: 1562580176725
+Interaction starts: 1562580177495
+User starts talking: 1562580178022
+User stops talking: 1562580178616
+Interaction stops: 1562580179462

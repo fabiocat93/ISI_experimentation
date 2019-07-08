@@ -162,6 +162,10 @@ body {
     display: none;
 }
 
+#breast-container{
+    display:none;
+}
+
 #mouth-container {
     display: block;
 }

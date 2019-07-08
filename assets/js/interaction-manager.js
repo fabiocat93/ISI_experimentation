@@ -21,6 +21,7 @@ $( document ).ready(function() {
         temp();
     });
 
+    $('.btn').removeClass('next-button');
     $('#agent-stops-button').addClass('next-button');
 
     $('#save-logging-button').click(function(e) {
@@ -31,6 +32,77 @@ $( document ).ready(function() {
     $('#set-avatar-button').click(function(e) {
         sendMessage(link);
     });
+});
+
+$('#back-button').click(function(e) {
+    if(text.lastIndexOf("\n")>0) {
+        text = text.substring(0, text.lastIndexOf("\n"));
+    } else {
+        text = "";
+    }
+
+    if ($('#agent-stops-button').hasClass('next-button')) {
+        if ($('#agent-stops-button').html() === "Start") {
+            $('.btn').removeClass('next-button');
+            $('#interaction-stops-button').addClass('next-button');
+
+            sendMessage("agent-listening");
+            $('#status').html("the agent is listening");
+        } else {
+            $('#agent-stops-button').html("Start");
+
+            sendMessage("idle");
+            $('#status').html("the agent is speaking");    
+        }
+
+    } else if ($('#interaction-starts-button').hasClass('next-button')) {
+        $('.btn').removeClass('next-button');
+        $('#agent-stops-button').addClass('next-button');
+
+        $('#agent-stops-button').html("Stop");
+        sendMessage("agent-listening");
+        $('#status').html("the agent is listening");
+
+    } else if ($('#interaction-stops-button').hasClass('next-button')) {
+        $('.btn').removeClass('next-button');
+        $('#talk-stops-button').addClass('next-button');
+
+        sendMessage("agent-speaking");
+        $('#status').html("the agent is speaking");
+
+    } else if ($('#talk-starts-button').hasClass('next-button')) {
+        $('.btn').removeClass('next-button');
+        $('#interaction-starts-button').addClass('next-button');
+
+        sendMessage("idle");
+        $('#status').html("idle");
+
+    } else if ($('#talk-stops-button').hasClass('next-button')) {
+        $('.btn').removeClass('next-button');
+        $('#talk-starts-button').addClass('next-button');
+
+        sendMessage("agent-speaking");
+        $('#status').html("the agent is speaking");    
+    } else if ($('#beep-button').hasClass('next-button')) {
+        if (!interactionStartsWithBeep) {
+            
+   
+
+            interactionStartsWithBeep = true;
+        } else {
+
+            $('#beep-button').removeClass('next-button');
+            $('.btn').removeClass('next-button');
+            $('#agent-stops-button').addClass('next-button');
+    
+            $('#agent-stops-button').html("Stop");
+            sendMessage("agent-listening");
+            $('#status').html("the agent is listening");
+    
+
+            interactionStartsWithBeep = false;
+        }
+    }
 });
 
 function navbar_form_creator(parent, name, list_of_options) {
@@ -95,8 +167,10 @@ function manageAgentStartAndStopButton() {
     if ($( "#agent-stops-button" ).html() === "Stop") {
 
         if (interactionWay === "Beep and wait") {
+            $('.btn').removeClass('next-button');
             $('#beep-button').addClass('next-button');
         } else {
+            $('.btn').removeClass('next-button');
             $('#interaction-starts-button').addClass('next-button');
         }
 
@@ -114,6 +188,9 @@ function manageAgentStartAndStopButton() {
         // Iniziamo a parlare
         $( "#agent-stops-button" ).html("Stop");
         $( "#agent-start-and-stop-description").html("We stop talking");
+        $('.btn').removeClass('next-button');
+        $('#agent-stops-button').addClass('next-button');
+
 
         updateText("The agent starts speaking at: " + Date.now());
 
@@ -138,6 +215,7 @@ function manageInteractionStarts() {
 
     $('#beep-button').removeClass('next-button');
     $('#interaction-starts-button').removeClass('next-button');
+    $('.btn').removeClass('next-button');
     $('#talk-starts-button').addClass('next-button');    
 
     $( "#interaction-starts-time").html(msToTime(startInteraction));
@@ -159,6 +237,7 @@ $( "#talk-starts-button" ).click(function() {
     updateText("User starts talking: " + startTalking);
     $( "#talk-starts-time").html(msToTime(startTalking));
 
+    $('.btn').removeClass('next-button');
     $('#talk-stops-button').addClass('next-button');
     $('#talk-starts-button').removeClass('next-button');
 });
@@ -169,9 +248,11 @@ $( "#talk-stops-button" ).click(function() {
     $( "#talk-stops-time").html(msToTime(stopTalking));
 
     if (interactionWay === "Beep and wait") {
+        $('.btn').removeClass('next-button');
         $('#beep-button').addClass('next-button');
     } else {
-        $('#interaction-stops-button').addClass('next-button');    
+        $('.btn').removeClass('next-button');  
+        $('#interaction-stops-button').addClass('next-button');
     }
 
     $('#talk-stops-button').removeClass('next-button');
@@ -183,9 +264,11 @@ $( "#interaction-stops-button" ).click(function() {
 
 function manageInteractionStops() {
 
-    $('#agent-stops-button').addClass('next-button');
+    $('.btn').removeClass('next-button');
     $('#interaction-stops-button').removeClass('next-button');
     $('#beep-button').removeClass('next-button');
+    $('#agent-stops-button').addClass('next-button');
+    $('#agent-stops-button').html('Start');
 
     console.log("manageInteractionStops");
     stopInteraction = Date.now(); // - weStopTalking;
