@@ -1,6 +1,7 @@
 html, 
 body {
     height: 100%;
+    background: white;
 }
 
 .navbar {
@@ -13,6 +14,11 @@ body {
     margin-right: 5px;
 }
 
+#status {
+    text-align: center;
+    font-weight: bold;
+}
+
 #beep-icon {
     height: 45px;
 }
@@ -21,7 +27,7 @@ body {
     visibility: hidden;
     position: absolute;
     top: 15%;
-    right: 40%;
+    right: 60%;
 }
 
 #interaction-form-container {
@@ -50,19 +56,168 @@ body {
     right: 18%;
 }
 
+#drop-logging-button {
+    position: absolute;
+    top: 15%;
+    right: 29%;
+}
+
 #set-avatar-button {
     position: absolute;
     top: 15%;
-    right: 28%;
+    right: 39%;
+}
+
+#reset-avatar-button {
+    position: absolute;
+    top: 15%;
+    right: 49%;
 }
 
 #input-name {
     position: absolute;
     top: 15%;
-    right: 50%;
-    width: 20%;
+    right: 65%;
+    width: 15%;
 }
 
 .next-button {
     background: red !important;
+}
+
+#image-column {
+    text-align: center;
+}
+
+#avatar-image {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 5%;
+}
+
+#left-column {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 5%;
+}
+
+
+#style-container {
+    display: none;
+}
+
+#perspective-container {
+    display: none;
+}
+
+#pose-container {
+    display: none
+}
+
+#beard-container {
+    display: none;
+}
+
+#brow-container {
+    display: none;
+}
+
+#cheek_details-container {
+    display: none;
+}
+
+#ear-container {
+    display: none;
+}
+
+#eye-container {
+    display: none;
+}
+
+#eyelash-container {
+    display: none;
+}
+
+#eye_details-container {
+    display: none;
+}
+
+#face_lines-container {
+    display: none;
+}
+
+#glasses-container {
+    display: none;
+}
+
+#hair-container {
+    display: block;
+}
+
+#hat-container {
+    display: none;
+}
+
+#jaw-container {
+    display: none;
+}
+
+#mouth-container {
+    display: block;
+}
+
+#nose-container {
+    display: block;
+}
+
+#beard_tone-container {
+    display: none;
+}
+
+#blush_tone-container {
+    display: none;
+}
+
+#brow_tone-container {
+    display: block;
+}
+
+#eyeshadow_tone-container {
+    display: none;
+}
+
+#hair_tone-container {
+    display: block;
+}
+
+#hair_treatment_tone-container {
+    display: none;
+}
+
+#lipstick_tone-container {
+    display: none;
+}
+
+#pupil_tone-container {
+    display: block;
+}
+
+#skin_tone-container {
+    display: block;
+}
+
+#body-container {
+    display: none;
+}
+
+#face_proportion-container {
+    display: none;
+}
+
+#eye_spacing-container {
+    display: none;
+}
+
+#eye_size-container {
+    display: none;
 }

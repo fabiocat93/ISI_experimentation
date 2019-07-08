@@ -10,7 +10,7 @@ var stopInteraction;
 var stopTalking;
 var stopSetup;
 
-var link = "https://preview.bitmoji.com/avatar-builder-v3/preview/body?scale=1&gender=1&style=1&rotation=1&beard=-1&brow=-1&cheek_details=-1&ear=-1&earring=-1&eye=-1&eyelash=-1&eye_details=-1&face_lines=-1&glasses=-1&hair=490&hat=-1&jaw=185&mouth=-1&nose=-1&pupil=-1&beard_tone=-1&blush_tone=-1&brow_tone=-1&eyeshadow_tone=-1&hair_tone=-1&lipstick_tone=-1&pupil_tone=-1&skin_tone=-1&body=1&face_proportion=0";
+//var link = "https://preview.bitmoji.com/avatar-builder-v3/preview/body?scale=1&gender=1&style=1&rotation=1&beard=-1&brow=-1&cheek_details=-1&ear=-1&earring=-1&eye=-1&eyelash=-1&eye_details=-1&face_lines=-1&glasses=-1&hair=490&hat=-1&jaw=185&mouth=-1&nose=-1&pupil=-1&beard_tone=-1&blush_tone=-1&brow_tone=-1&eyeshadow_tone=-1&hair_tone=-1&lipstick_tone=-1&pupil_tone=-1&skin_tone=-1&body=1&face_proportion=0";
 
 $( document ).ready(function() {
     interaction_form_creator();
@@ -109,6 +109,7 @@ function manageAgentStartAndStopButton() {
         $( "#agent-stops-button" ).html("Start");
         $( "#agent-start-and-stop-description").html("We start talking");
         sendMessage("idle");
+        $('#status').html("idle");
     } else {
         // Iniziamo a parlare
         $( "#agent-stops-button" ).html("Stop");
@@ -123,6 +124,7 @@ function manageAgentStartAndStopButton() {
         $( "#interaction-stops-time").html("00:00");
 
         sendMessage("agent-speaking");
+        $('#status').html("the agent is speaking");
     }
 }
 
@@ -140,7 +142,17 @@ function manageInteractionStarts() {
 
     $( "#interaction-starts-time").html(msToTime(startInteraction));
     sendMessage("agent-listening");
+    $('#status').html("the agent is listening");
+
 }
+
+$( "#drop-logging-button" ).click(function() {
+    text = "";
+});
+
+$( "#reset-avatar-button" ).click(function() {
+    resetAvatar();
+});
 
 $( "#talk-starts-button" ).click(function() {
     startTalking = Date.now(); // - weStopTalking;
@@ -180,7 +192,7 @@ function manageInteractionStops() {
     updateText("Interaction stops: " + stopInteraction + "\n");
     $( "#interaction-stops-time").html(msToTime(stopInteraction));
     sendMessage("idle");
-
+    $('#status').html("idle");
 }
 
 $( "#setup-starts-button" ).click(function() {
